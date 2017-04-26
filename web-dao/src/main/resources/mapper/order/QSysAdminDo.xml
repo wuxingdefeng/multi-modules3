@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间路径采用实体类完整路径 -->
+<mapper namespace="com.jueke.model.system.QSysAdminDo">
+
+<select id="list" resultType="hashmap" parameterType="java.util.Map">
+	SELECT 
+	       a.admin_id AS adminId,a.admin_name AS adminName,a.sex,
+	      a.status,a.role_id AS roleId, b.role_name roleName
+	FROM q_sys_admin a,q_sys_role b
+	 where 1=1
+	 and a.is_del=0
+	 and a.role_id = b.role_id
+	 <if test="adminName!=null and adminName!=''">
+	 and a.admin_name like CONCAT('%',trim(#{adminName}),'%')
+	 </if>
+	 <if test="adminId!=null and adminId!=''">
+	 and a.admin_id !=#{adminId}
+	 </if>
+	 <if test="roleName!=null and roleName!=''">
+	 and b.role_name like CONCAT('%',trim(#{roleName}),'%')
+	 </if>
+	 <if test="pageSize!=null and pageSize!=0">
+	limit #{startRow}, #{pageSize}
+	</if>     
+</select>
+<select  id="count"  resultType="int"  parameterType="qSysAdminDo">
+    select count(1) from q_sys_admin a,q_sys_role b
+	 where 1=1
+	  and a.is_del=0
+	 and a.role_id = b.role_id
+</select>
+
+
+<!--  判断账号密码是否正确 -->
+<select id="login" resultType="qSysAdminDo" parameterType="qSysAdminDo">
+	 SELECT 
+	  admin_id AS adminId,
+	  admin_name AS adminName,
+	  PASSWORD AS password,
+	  heand_url AS heandUrl,
+	  sex AS sex,
+	  STATUS AS status,
+	  role_id AS roleId,
+	  is_del AS idDel,
+	  update_date AS updateDate,
+	  del_date AS delDate
+	 FROM q_sys_admin
+	WHERE  admin_name = #{adminName}
+		AND PASSWORD = #{password}
+		 and is_del=0
+</select>
+
+<update id="update" parameterType="qSysAdminDo">
+	UPDATE q_sys_admin SET 
+			sex = #{Sex},
+			admin_name=#{AdminName},
+			role_id=#{RoleId}
+	WHERE admin_id = #{adminId} 
+</update>
+
+<update id="updatePassword" parameterType="qSysAdminDo">
+	UPDATE q_sys_admin SET 
+			PASSWORD = #{comfirmPassword}
+	WHERE admin_id = #{AdminId}
+</update>
+
+<insert id="insert" parameterType="qSysAdminDo">
+insert into q_sys_admin (
+          admin_id ,
+		  admin_name,
+		  PASSWORD ,
+		  heand_url ,
+		  sex ,
+		  STATUS,
+		  role_id,
+		  is_del
+		  )values(
+		  #{adminId},
+		  #{adminName},
+		  #{Password},
+		  '',
+		  #{sex},
+		  1,
+		  #{roleId},
+		  0
+		  )
+</insert>
+<select id="get" resultType="qSysAdminDo"  parameterType="String">
+	    select
+		     admin_id as adminId,
+			 admin_name as adminName,
+			 role_id as RoleId,
+			 sex
+		 from q_sys_admin
+		 where  admin_id=#{adminId}
+</select>
+<select id="roleList" resultType="hashmap" parameterType="java.util.Map">
+	SELECT role_id AS id,role_name AS text FROM q_sys_role 
+		WHERE 1=1
+		AND is_del =0
+</select>
+
+<delete id="deletebyId" parameterType="String">
+delete from q_sys_admin where admin_id=#{_parameter}
+</delete>
+
+<select id="getPassword" resultType="Map" parameterType="String">
+SELECT password as userPassword FROM q_sys_admin WHERE admin_id=#{_parameter}
+</select>
+
+	<select id="getAdminList" resultType="Map">
+      SELECT * FROM q_sys_admin a WHERE 1=1 LIMIT 10
+	</select>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd	
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	<context:component-scan base-package="com.jueke.controller" />
+	<!--<context:component-scan base-package="com.json" />-->
+	<!-- 对静态资源文件的访问  restful-->
+	<!--<mvc:resources mapping="/admin/**" location="/,/admin/" />-->
+    <!--<mvc:resources location="js/" mapping="/**"/>
+    <mvc:resources location="css" mapping="/**"/>-->
+    <!--<mvc:resources mapping="/static/**" location="/,/static/" />-->
+    <!--<mvc:resources mapping="/plugins/**" location="/,/plugins/" />
+    <mvc:resources mapping="/uploadFiles/**" location="/,/uploadFiles/" />-->
+	
+	<!--<mvc:interceptors>
+        &lt;!&ndash; 配置Token拦截器，防止用户重复提交数据 &ndash;&gt;
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.core.interceptor.TokenInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+	<!-- 配置SpringMVC的视图解析器 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+<!--多个后缀，暂时未成功 -->
+	<!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="2">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="viewNames" value="appServer*"/>
+		<property name="contentType" value="text/html"/>
+		<property name="prefix" value="/WEB-INF/view"/>
+		<property name="suffix" value=".html"/>
+	</bean>-->
+	<!--<bean id="exceptionResolver" class="com.core.sover.MyExceptionResolver"></bean>-->
+	<!-- 上传拦截，如最大上传值及最小上传值 -->
+	<!-- <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">
+			<value>104857600</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+		<property name="defaultEncoding">
+			<value>utf-8</value>
+		</property>
+	</bean> -->
+	<!--<bean id="sdf" class="org.springframework.jms.connection.CachingConnectionFactory"></bean>-->
+</beans>
