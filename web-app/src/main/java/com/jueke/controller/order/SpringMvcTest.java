@@ -20,11 +20,11 @@ public class SpringMvcTest {
 
     @RequestMapping("/goHome")
     public  String goHome(String userName, HttpServletRequest request, HttpSession session){
-        System.out.println("--------------------------------------------------------"+userName);
-        System.out.println("-------------------------e-------------------------------"+userName);
-        System.out.println("------------------------ee--------------------------------"+userName);
-        System.out.println("------------------------e-------------------------------"+userName);
-        System.out.println("--------------------------------------------------------"+userName);
+        System.out.println("---------------------------------d-----------------------"+userName);
+        System.out.println("-------------------------e------d-------------------------"+userName);
+        System.out.println("------------------------ee---d-----------------------------"+userName);
+        System.out.println("------------------------e-----d--------------------------"+userName);
+        System.out.println("----------------------------s----------------------------"+userName);
         //qSysAdminService.getAdminList();
         session.setAttribute("userName",userName);
         return "/index";
