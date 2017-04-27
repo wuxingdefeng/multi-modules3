@@ -20,6 +20,11 @@ public class SpringMvcTest {
 
     @RequestMapping("/goHome")
     public  String goHome(String userName, HttpServletRequest request, HttpSession session){
+        System.out.println("--------------------------------------------------------"+userName);
+        System.out.println("-------------------------e-----s--------------------------"+userName);
+        System.out.println("------------------------ee----s----------------------------"+userName);
+        System.out.println("------------------------e----sdf---------------------------"+userName);
+        System.out.println("---------------------------sd-----------------------------"+userName);
         System.out.println("---------------------------------d-----------------------"+userName);
         System.out.println("-------------------------e------d-------------------------"+userName);
         System.out.println("------------------------ee---d-----------------------------"+userName);
