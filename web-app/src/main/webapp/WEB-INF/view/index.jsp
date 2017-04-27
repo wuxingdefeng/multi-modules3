@@ -23,7 +23,7 @@
 <script type="text/javascript">
     var userName="${sessionScope.userName}";
     var webSocket =
-            new WebSocket('ws://localhost:8085/websocketTest?userName='+userName);
+            new WebSocket('ws://localhost:8089/websocketTest?userName='+userName);
     webSocket.onerror = function(event) {
         onError(event)
     };
