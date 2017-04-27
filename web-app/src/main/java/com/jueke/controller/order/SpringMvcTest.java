@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * Created by Administrator on 2017/3/28.
@@ -21,6 +20,8 @@ public class SpringMvcTest {
 
     @RequestMapping("/goHome")
     public  String goHome(String userName, HttpServletRequest request, HttpSession session){
+        System.out.println("--------------------------------------------------------"+userName);
+        System.out.println("--------------------------------------------------------"+userName);
         System.out.println("--------------------------------------------------------"+userName);
         //qSysAdminService.getAdminList();
         session.setAttribute("userName",userName);
