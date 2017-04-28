@@ -5,8 +5,13 @@
             + request.getServerName() + ":" + request.getServerPort()
             + path + "/";
 %>
-<!Doctype html>
+
 <html>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
 <body>
 <h2>Hello World!</h2>
 
@@ -23,7 +28,7 @@
 <script type="text/javascript">
     var userName="${sessionScope.userName}";
     var webSocket =
-            new WebSocket('ws://localhost:8089/websocketTest?userName='+userName);
+            new WebSocket('ws://localhost:8085/websocketTest?userName='+userName);
     webSocket.onerror = function(event) {
         onError(event)
     };
