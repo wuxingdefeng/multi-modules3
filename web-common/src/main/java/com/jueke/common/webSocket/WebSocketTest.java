@@ -1,7 +1,6 @@
 package com.jueke.common.webSocket;
 
 
-import com.jueke.model.websocket.Message;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
