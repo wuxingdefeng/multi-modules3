@@ -24,6 +24,6 @@ public class test {
         for(int z:qb){
             System.out.println(z);
         }
-
+      System.out.println(2.415*8.29);
     }
 }

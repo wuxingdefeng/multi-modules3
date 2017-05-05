@@ -30,7 +30,7 @@ public class SpringMvcTest {
         System.out.println("------------------------ee---d-----------------------------"+userName);
         System.out.println("------------------------e-----d--------------------------"+userName);
         System.out.println("----------------------------s----------------------------"+userName);
-        //qSysAdminService.getAdminList();
+        qSysAdminService.getAdminList();
         session.setAttribute("userName",userName);
         return "/index";
     }

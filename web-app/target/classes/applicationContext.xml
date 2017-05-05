@@ -99,7 +99,7 @@
         <!--<property name="typeAliasesPackage" value="cn.springmvcTest.model" />-->
         <property name="mapperLocations" value="classpath:mapper/*/*.xml"></property>
     </bean>
-    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-        <constructor-arg  ref="sqlSessionFactory" />
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg  ref="sqlSessionFactory" index="0"/>
     </bean>
     </beans>
