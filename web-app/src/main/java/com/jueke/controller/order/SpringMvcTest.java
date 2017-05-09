@@ -20,23 +20,15 @@ public class SpringMvcTest {
 
     @RequestMapping("/goHome")
     public  String goHome(String userName, HttpServletRequest request, HttpSession session){
-        System.out.println("--------------------------------------------------------"+userName);
-        System.out.println("-------------------------e-----s--------------------------"+userName);
-        System.out.println("------------------------ee----s----------------------------"+userName);
-        System.out.println("------------------------e----sdf---------------------------"+userName);
-        System.out.println("---------------------------sd-----------------------------"+userName);
-        System.out.println("---------------------------------d-----------------------"+userName);
-        System.out.println("-------------------------e------d-------------------------"+userName);
-        System.out.println("------------------------ee---d-----------------------------"+userName);
-        System.out.println("------------------------e-----d--------------------------"+userName);
-        System.out.println("----------------------------s----------------------------"+userName);
+
         qSysAdminService.getAdminList();
         session.setAttribute("userName",userName);
         return "/index";
     }
     @RequestMapping("/login")
     public String goLogin(){
-        return "/login";
+        //return "/login";
+        return "/webRTC/sdk_guide";
     }
     @ResponseBody
     @RequestMapping("/webSozz")
