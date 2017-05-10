@@ -11,15 +11,9 @@
                         http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
     <description>spring-data-redis配置</description>
     <context:property-placeholder ignore-unresolvable="true" location="classpath:config/redisconfig.properties"/>
-    <!--<bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="${redis.host}"/>
-        <property name="port" value="${redis.port}"/>
-        <property name="password" value="${redis.pass}"/>
-    </bean>-->
 
     <!-- redis连接池 -->
     <bean id="jedisConfig" class="redis.clients.jedis.JedisPoolConfig">
-
         <property name="maxIdle" value="${redis_max_idle}"></property>
         <property name="maxWaitMillis" value="${redis_max_wait}"></property>
         <property name="maxTotal" value="${redis_max_active}"></property>
@@ -27,7 +21,7 @@
     </bean>
     <!-- redis连接工厂 -->
     <bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <!--<property name="hostName" value="${redis_addr}"></property>-->
+        <property name="hostName" value="${redis_addr}"></property>
         <property name="port" value="${redis_port}"></property>
         <!--<property name="password" value="${redis_auth}"></property>-->
         <property name="poolConfig" ref="jedisConfig"></property>
@@ -37,24 +31,33 @@
 
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
         <property name="connectionFactory" ref="redisConnectionFactory"/>
+        <!--     如果不配置Serializer，那么存储的时候只能使用String，如果用对象类型存储，那么会提示错误 can't cast to String！！！-->
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+        <!--开启事务-->
+        <property name="enableTransactionSupport" value="true"/>
     </bean>
     <!-- 序列化 -->
-    <bean id="jdkSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+   <!-- <bean id="jdkSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>-->
 
     <!-- 监听 -->
-    <bean id="smsMessageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
+    <!--<bean id="smsMessageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">
         <property name="delegate" ref="smsMessageDelegateListener" />
         <property name="serializer" ref="jdkSerializer" />
-    </bean>
+    </bean>-->
 
    <!-- <bean id="sendMessage" class="cn.springmvcTest.services.redisService.SendMessage">
     <property name="redisTemplate" ref="redisTemplate"/>
     </bean>-->
 
-    <redis:listener-container>
+  <!--  <redis:listener-container>
         <redis:listener ref="smsMessageListener" method="handleMessage"
                         serializer="jdkSerializer" topic="sms_queue_web_online" />
-    </redis:listener-container>
+    </redis:listener-container>-->
 
     <!-- jedis -->
     <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">

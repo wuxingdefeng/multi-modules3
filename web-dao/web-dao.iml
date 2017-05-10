@@ -13,6 +13,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="web-model" />
     <orderEntry type="module" module-name="web-common" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-test:4.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jms:4.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.0.4.RELEASE" level="project" />
@@ -51,7 +52,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-dao:2.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-mock:2.0.8" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-test:4.0.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-ehcache:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: net.sf.ehcache:ehcache-core:2.0.0" level="project" />
