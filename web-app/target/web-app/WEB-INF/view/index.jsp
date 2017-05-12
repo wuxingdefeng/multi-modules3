@@ -16,7 +16,7 @@
 <h2>Hello World!</h2>
 
 <div>
-
+    内容：<input id="contents" type="text"/>
     <input type="submit" value="Start" onclick="start()">
 </div>
 <div id="userName">${sessionScope.userName}</div>
@@ -28,7 +28,7 @@
 <script type="text/javascript">
     var userName="${sessionScope.userName}";
     var webSocket =
-            new WebSocket('ws://localhost:8085/websocketTest?userName='+userName);
+            new WebSocket('ws://localhost:8080/websocketTest?userName='+userName);
     webSocket.onerror = function(event) {
         onError(event)
     };
@@ -73,7 +73,9 @@
     }
 
     function start() {
-        webSocket.send('hello');
+        var content = document.getElementById("contents").value;
+        console.log(content);
+        webSocket.send(content);
         return false;
     }
 </script>
