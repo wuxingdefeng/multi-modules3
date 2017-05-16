@@ -21,10 +21,10 @@ public class SpringMvcTest {
     @RequestMapping("/goHome")
     public  String goHome(String userName, HttpServletRequest request, HttpSession session){
 
-        //qSysAdminService.getAdminList();
+        qSysAdminService.getAdminList();
         session.setAttribute("userName",userName);
-       // return "/index";
-        return "/webRTC/index";
+        return "/index";
+        //return "/webRTC/index";
     }
     @RequestMapping("/login")
     public String goLogin(){

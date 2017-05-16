@@ -2,6 +2,7 @@ package com.jueke.service.impl.order;
 
 
 import com.jueke.common.UUidUtils.UUIDUtil;
+import com.jueke.common.redisUtil.RedisUtilInter;
 import com.jueke.common.santi.AuthServer;
 import com.jueke.common.santi.RestSdk;
 import com.jueke.common.santi.RoomServer;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.websocket.Session;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,8 +29,8 @@ import static com.jueke.common.webSocket.WebSocketTest.userSessionMap;
 public class QSysAdminServiceImpl implements QSysAdminService {
     @Autowired
     private QSysAdminDao qSysAdminDao;
-   // @Autowired
-    //private RedisUtilInter redisUtilInter;
+    @Autowired
+    private RedisUtilInter redisUtilInter;
 
 
     public Object getAdminList() {
@@ -45,37 +47,39 @@ public class QSysAdminServiceImpl implements QSysAdminService {
                 System.out.println(list.size()+":"+map);
         }
         System.out.println("--------------------aop----------------------");
-//        System.out.println("--------------------redis----------------------");
-//        System.out.println("--------------------redis  String----------------------");
-//        redisUtilInter.setString("user1","xiaozhi",-1);
-//        System.out.println(redisUtilInter.getString("user1"));
-//        List<String> rlist = new ArrayList<String>();
-//        rlist.add("a中");
-//        rlist.add("b中");
-//        rlist.add("c中");
-//        rlist.add("d中");
-//        redisUtilInter.setList("rlist",rlist,-1);
-//         rlist = (List<String>)redisUtilInter.getList("rlist");
-//        System.out.println("--------------------redis  list----------------------");
-//        for(String s:rlist){
-//            System.out.println(s);
-//        }
-//        Map<String,String> rmap = new HashMap<String, String>();
-//        rmap.put("a","a中");
-//        rmap.put("b","b中");
-//        rmap.put("c","c中");
-//        rmap.put("d","d中");
-//        redisUtilInter.setHashMap("rmap",rmap,-1);
-//        rmap = (HashMap<String,String>)redisUtilInter.getHashMap("rmap");
-//        System.out.println("--------------------redis  map----------------------");
-//        for(Map.Entry entry:rmap.entrySet()){
-//            System.out.println("key:"+entry.getKey()+",value:"+entry.getValue());
-//        }
-//        boolean isList = redisUtilInter.containsKey("rlist");
-//        boolean isMap = redisUtilInter.containsKey("rmap");
-//        boolean suijiqqq = redisUtilInter.containsKey("suijiqqq");
-//        System.out.println("isList:"+isList+",isMap:"+isMap+",suijiqqq:"+suijiqqq);
-//        System.out.println("--------------------redis----------------------");
+        System.out.println("--------------------redis----------------------");
+        System.out.println("--------------------redis  String----------------------");
+        redisUtilInter.setString("user1","xiaozhi",-1);
+        System.out.println(redisUtilInter.getString("user1"));
+        List<String> rlist = new ArrayList<String>();
+        rlist.add("a中1");
+        rlist.add("b中1");
+        rlist.add("c中11");
+        rlist.add("d中");
+        redisUtilInter.setList("rlist2",rlist,-1);
+
+        Object objz= redisUtilInter.getList("rlist2");
+        List<String>  rlist2 = (List<String>) objz;
+        System.out.println("--------------------redis  list----------------------");
+        for(String s:rlist2){
+            System.out.println(s);
+        }
+        Map<String,String> rmap = new HashMap<String, String>();
+        rmap.put("a","a中1");
+        rmap.put("b","b中1");
+        rmap.put("c","c中1");
+        rmap.put("d","d中1");
+        redisUtilInter.setHashMap("rmap",rmap,-1);
+        rmap = (HashMap<String,String>)redisUtilInter.getHashMap("rmap");
+        System.out.println("--------------------redis  map----------------------");
+        for(Map.Entry entry:rmap.entrySet()){
+            System.out.println("key:"+entry.getKey()+",value:"+entry.getValue());
+        }
+        boolean isList = redisUtilInter.containsKey("rlist2");
+        boolean isMap = redisUtilInter.containsKey("rmap");
+        boolean suijiqqq = redisUtilInter.containsKey("suijiqqq");
+        System.out.println("isList:"+isList+",isMap:"+isMap+",suijiqqq:"+suijiqqq);
+        System.out.println("--------------------redis----------------------");
 
         return results;
        // return uu.getUUid();
