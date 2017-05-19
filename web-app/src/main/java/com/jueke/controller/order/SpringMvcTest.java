@@ -71,4 +71,10 @@ public class SpringMvcTest {
         Object obj = qSysAdminService.yaoqingJoin(userNames,room_id,accessTocken);
         return obj;
     }
+
+    @RequestMapping("/home")
+    public String goHome(){
+        return "/home";
+        //  return "/webRTC/sdk_guide";
+    }
 }

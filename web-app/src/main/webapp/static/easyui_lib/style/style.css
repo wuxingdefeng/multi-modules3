@@ -1,0 +1,96 @@
+.layout-split-north {
+  border-bottom: 0px solid #efefef;
+}
+.layout-split-south {
+  border-top: 0px solid #efefef;
+}
+.layout-split-east {
+  border-left: 0px solid #efefef;
+}
+.layout-split-west {
+  border-right: 0px solid #efefef;
+}
+.inputStyle {
+  vertical-align: text-bottom;
+  margin-bottom: 2px;
+  *margin-bottom: -2px;  //ºÊ»›IE6£¨IE7
+}
+
+ul,ol,li
+	{
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none
+}
+
+a {
+	color: #0E2D5F;
+	text-decoration: none;
+	outline: none;
+}
+
+a:active {
+	star: expression(this.onFocus = this.blur () );
+}
+
+a:hover {
+	
+	text-decoration: none
+}
+#fm{
+            margin:0;
+            padding:10px 10px;
+        }
+
+.fitem {
+	margin-bottom: 5px;
+}
+
+.fitem labe1 {
+	display: inline-block;
+	width: 100px;
+}
+
+.fitem labe2 {
+	display: inline-block;
+	width: 100px;
+}
+
+.table td input{
+	width:225px;
+}
+
+.inputLong{
+	width:565px !important;
+}
+
+.table th{
+	width:115px !important;
+	padding-left: 0 !important;
+}
+
+
+.table td .combo{
+	width:231px !important;
+}
+
+.table td .combo-text{
+	width:210px !important;
+}
+
+.table td textarea{
+	width:96.5% !important;
+}
+
+.pop-cell{ 
+  width: 225px !important;
+}
+
+.datagrid-pager td{
+vertical-align: middle !important;
+padding: 1px 0px 4px 0px !important;
+height: auto !important;
+}
