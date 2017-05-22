@@ -10,8 +10,8 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <title >主页</title>
-    <link rel="stylesheet" href="<%=basePath%>/static/extends_layer/layer_.css" type="text/css">
-    <script type="text/javascript" src="<%=basePath%>/static/layer/layer.js"></script>
+    <%--<link rel="stylesheet" href="<%=basePath%>/static/extends_layer/layer_.css" type="text/css">
+    <script type="text/javascript" src="<%=basePath%>/static/layer/layer.js"></script>--%>
     <link rel="stylesheet" type="text/css"
           href="<%=basePath%>/static/easyui_lib/home/index.css">
     <script type="text/javascript" src="<%=basePath%>/static/js/home/index.js"></script>
@@ -273,5 +273,5 @@
 </div>
 
 </body>
-<script type="text/javascript" src="<%=basePath%>/static/js/home/homeIM.js"></script>
+<%--<script type="text/javascript" src="<%=basePath%>/static/js/home/homeIM.js"></script>--%>
 </html>
